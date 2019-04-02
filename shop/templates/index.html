@@ -1,0 +1,310 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block content %}
+
+    <!-- HOME -->
+    <div id="home">
+        <!-- container -->
+        <div class="container">
+            <!-- home wrap -->
+            <div class="home-wrap">
+                <!-- home slick -->
+                <div id="home-slick">
+
+                    {% for banner in top_banners %}
+                        <!-- banner -->
+                        <div class="banner banner-1">
+                            {% thumbnail banner.image "1200x675" crop="center" as im %}
+                                <img src="{{ im.url }}">
+                            {% endthumbnail %}
+                            <div class="banner-caption text-center">
+                                <h1>{{ banner.title }}</h1>
+                                <h3 class="white-color font-weak">{{ banner.sub_title }}</h3>
+                                <button class="primary-btn">{{ banner.button_text }}</button>
+                            </div>
+                        </div>
+                        <!-- /banner -->
+                    {% endfor %}
+
+                </div>
+                <!-- /home slick -->
+            </div>
+            <!-- /home wrap -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /HOME -->
+
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- banner -->
+                <div class="col-md-4 col-sm-6">
+                    <a class="banner banner-1" href="#">
+                        <img src="./img/banner10.jpg" alt="">
+                        <div class="banner-caption text-center">
+                            <h2 class="white-color">NEW COLLECTION</h2>
+                        </div>
+                    </a>
+                </div>
+                <!-- /banner -->
+
+                <!-- banner -->
+                <div class="col-md-4 col-sm-6">
+                    <a class="banner banner-1" href="#">
+                        <img src="./img/banner11.jpg" alt="">
+                        <div class="banner-caption text-center">
+                            <h2 class="white-color">NEW COLLECTION</h2>
+                        </div>
+                    </a>
+                </div>
+                <!-- /banner -->
+
+                <!-- banner -->
+                <div class="col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3">
+                    <a class="banner banner-1" href="#">
+                        <img src="./img/banner12.jpg" alt="">
+                        <div class="banner-caption text-center">
+                            <h2 class="white-color">NEW COLLECTION</h2>
+                        </div>
+                    </a>
+                </div>
+                <!-- /banner -->
+
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- section-title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title">Deals Of The Day</h2>
+                        <div class="pull-right">
+                            <div class="product-slick-dots-1 custom-dots"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /section-title -->
+
+                <!-- Product Slick -->
+                <div class="col-md-12 col-sm-6 col-xs-6">
+                    <div class="row">
+                        <div id="product-slick-1" class="product-slick">
+
+                            {% for product in deal_products %}
+                                <!-- Product Single -->
+                                <div class="product product-single">
+                                    <div class="product-thumb">
+                                        <div class="product-label">
+                                            <span>New</span>
+                                            <span class="sale">-20%</span>
+                                        </div>
+                                        <ul class="product-countdown">
+                                            <li><span>00 H</span></li>
+                                            <li><span>00 M</span></li>
+                                            <li><span>00 S</span></li>
+                                        </ul>
+                                        <a class="main-btn quick-view" href={% url 'product_page' product.id %}><i class="fa fa-search-plus"></i> Quick view
+                                        </a>
+                                        {% thumbnail product.image "270x360" crop="center" as im %}
+                                            <img src="{{ im.url }}">
+                                        {% endthumbnail %}
+                                    </div>
+                                    <div class="product-body">
+                                        <h3 class="product-price">NRS {{ product.price }}
+                                            <del class="product-old-price">NRS {{ product.strike_price }}</del>
+                                        </h3>
+                                        <div class="product-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o empty"></i>
+                                        </div>
+                                        <h2 class="product-name"><a href="#">{{ product.title }}</a></h2>
+                                        <div class="product-btns">
+                                            <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                            <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                            <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i>
+                                                Add
+                                                to
+                                                Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Product Single -->
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!-- /Product Slick -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+    <!-- section -->
+    <div class="section section-grey">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- banner -->
+                <div class="col-md-8">
+                    <div class="banner banner-1">
+
+                        {% thumbnail big_bottom_banner.image "1440x1080" crop="center" as im %}
+                            <img src="{{ im.url }}">
+                        {% endthumbnail %}
+
+                        <div class="banner-caption text-center">
+                            <h1 class="primary-color">{{ big_bottom_banner.title }}<br><span
+                                    class="white-color font-weak">{{ big_bottom_banner.sub_title }}</span>
+                            </h1>
+                            <button class="primary-btn">{{ big_bottom_banner.button_text }}</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /banner -->
+
+
+                {% for banner in small_bottom_banners %}
+                    <!-- banner -->
+                    <div class="col-md-4 col-sm-6">
+                        <a class="banner banner-1" href="#">
+                            {% thumbnail banner.image "720x540" crop="center" as im %}
+                                <img src="{{ im.url }}">
+                            {% endthumbnail %}
+                            <div class="banner-caption text-center">
+                                <h2 class="white-color">{{ banner.title }}</h2>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- /banner -->
+                {% endfor %}
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- section title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title">Latest Products</h2>
+                    </div>
+                </div>
+                <!-- section title -->
+
+                {% for product in latest_products %}
+                    <!-- Product Single -->
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="product product-single">
+                            <div class="product-thumb">
+                                <a class="main-btn quick-view" href={% url 'product_page' product.id %}><i class="fa fa-search-plus"></i> Quick view
+                                </a>
+                                {% thumbnail product.image "270x360" crop="center" as im %}
+                                    <img src="{{ im.url }}">
+                                {% endthumbnail %}
+                            </div>
+                            <div class="product-body">
+                                <h3 class="product-price">{{ product.price }}</h3>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>
+                                <h2 class="product-name"><a href="#">{{ product.title }}</a></h2>
+                                <div class="product-btns">
+                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                        Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Product Single -->
+                {% endfor %}
+
+            </div>
+            <!-- /row -->
+
+            <!-- row -->
+            <div class="row">
+                <!-- section title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title">Picked For You</h2>
+                    </div>
+                </div>
+                <!-- section title -->
+
+                {% for product in picked_products %}
+                    <!-- Product Single -->
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="product product-single">
+                            <div class="product-thumb">
+                                <a class="main-btn quick-view" href="{%  url 'product_page' product.id %}"><i class="fa fa-search-plus"></i> Quick view
+                                </a>
+                                {% thumbnail product.image "270x360" crop="center" as im %}
+                                    <img src="{{ im.url }}">
+                                {% endthumbnail %}
+                            </div>
+                            <div class="product-body">
+                                <h3 class="product-price">{{ product.price }}</h3>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>
+                                <h2 class="product-name"><a href="#">{{ product.title }}</a></h2>
+                                <div class="product-btns">
+                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                        Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Product Single -->
+                {% endfor %}
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+{% endblock %}
