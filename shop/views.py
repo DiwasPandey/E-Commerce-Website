@@ -67,7 +67,9 @@ class CartView(BaseView):
 
 class CategoryView(BaseView):
     def get(self, request, category_id):
-        return render(request, 'category.html')
+        self.template_context['products'] = Product.objects.filter(category=category_id)
+        self.template_context['category_name'] = Category.objects.get(pk=category_id)
+        return render(request, 'category.html', self.template_context)
 
 
 class CategoryAPI(APIView):
